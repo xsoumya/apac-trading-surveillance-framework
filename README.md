@@ -1,25 +1,29 @@
 # APAC Trading Surveillance Framework
 
-This repository provides a starter framework for building compliance and trading risk tooling focused on APAC markets, including equities, options, and futures.
+This repository provides a framework for building technical solutions in compliance and trading risk, focused on APAC markets including equities, options, and futures.
 
-## Purpose
+## Context
 
-This project is designed to support:
-- Python-based applications for surveillance and oversight
-- Interactive dashboards for compliance and trading risk teams
-- Integration with trading surveillance, monitoring, and market data APIs
-- Data pipeline and SQL workflows for analytics and investigation use cases
-- Collaboration with business stakeholders to translate requirements into technical solutions
+The role sits within Compliance and Trading Risk technology and supports oversight of trading activity across APAC markets. The work combines:
+- Python application development
+- Dashboard and reporting tooling
+- API integrations with surveillance and monitoring platforms
+- Data pipeline and SQL workflows
+- Collaboration with Compliance and Trading Risk teams to translate business requirements into technical solutions
 
-## Typical Use Cases
+## Goal of this repository
 
-- Monitoring unusual execution patterns
-- Investigating trading alerts and exceptions
-- Surveilling client or desk activity across multiple instruments
-- Building operational dashboards for APAC market oversight
-- Combining trade, reference, and surveillance system data in a unified workflow
+This project is a starter framework for building internal tools that help teams monitor trading activity, investigate alerts, and deliver operational oversight across market products and regions.
 
-## Repository Layout
+## Core capabilities
+
+- Trade monitoring dashboards for product and region views
+- Alert investigation workflows and summary metrics
+- SQL schema patterns for storing trade and surveillance data
+- ETL and API integration scaffolding
+- Configurable environment and deployment settings
+
+## Repository layout
 
 ```text
 .
@@ -27,8 +31,10 @@ This project is designed to support:
 ├── requirements.txt
 ├── pyproject.toml
 ├── .gitignore
+├── .env.example
 ├── app/
 │   ├── __init__.py
+│   ├── __main__.py
 │   ├── config.py
 │   ├── main.py
 │   ├── dashboards/
@@ -37,12 +43,12 @@ This project is designed to support:
 │   ├── data/
 │   │   ├── __init__.py
 │   │   └── sample_data.py
-│   ├── etl/
-│   │   ├── __init__.py
-│   │   └── extract_load.py
 │   ├── models/
 │   │   ├── __init__.py
 │   │   └── trade_models.py
+│   ├── services/
+│   │   ├── __init__.py
+│   │   └── alert_service.py
 │   └── utils/
 │       ├── __init__.py
 │       └── helpers.py
@@ -51,48 +57,67 @@ This project is designed to support:
 │   └── views.sql
 ├── tests/
 │   └── test_sample.py
-├── notebooks/
-│   └── exploratory_analysis.ipynb
-└── docs/
-    └── architecture.md
+├── docs/
+│   └── architecture.md
+└── notebooks/
+    └── exploratory_analysis.ipynb
 ```
 
-## Technology Stack
+## Recommended technology stack
 
 - Python
 - pandas
 - Plotly
 - Dash
-- SQL / PostgreSQL-compatible patterns
-- API client integration
-- Jupyter notebooks for exploration and prototyping
+- SQLAlchemy
+- PostgreSQL / SQLite for local development
+- Requests for API integration
+- Jupyter for exploratory analysis
 
-## Getting Started
+## Quick start
 
 1. Create a virtual environment:
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate
-   ```
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
 
 2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
 
-3. Run the sample dashboard:
-   ```bash
-   python -m app.main
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-## Example Dashboard Features
+3. Copy environment variables:
 
-- Trade volume and activity overview
-- Alert and surveillance event summaries
-- Instrument- and desk-level breakdowns
-- Time-series visualisation of activity trends
-- Filters for product type, region, and date range
+```bash
+cp .env.example .env
+```
+
+4. Run the dashboard:
+
+```bash
+python -m app
+```
+
+This starts the sample Dash surveillance dashboard locally.
+
+## Example dashboard views
+
+- trade volume by region and product
+- alert counts and exception trends
+- time-based series monitoring
+- desk and market segment segmentation
+
+## Example production use cases
+
+- Monitoring unusual trading activity in equities, options, and futures
+- Building operational or regulatory dashboards for APAC surveillance teams
+- Aggregating trade and alert metrics for investigation workflows
+- Integrating with surveillance or monitoring platform APIs
+- Driving business-facing reporting with SQL and Python analytics
 
 ## Notes
 
-This is a starter framework intended for internal technical enablement and prototype development in the compliance and trading risk domain.
+This repository is intentionally structured as a starter framework to support building production-ready monitoring and compliance tools while maintaining strong separation between data, models, services, and UI layers.

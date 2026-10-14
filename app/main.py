@@ -1,12 +1,12 @@
-from flask import Flask
+from __future__ import annotations
 
-app = Flask(__name__)
+from app.dashboards.surveillance_dashboard import create_dashboard
 
 
-@app.route("/")
-def index():
-    return "APAC Trading Surveillance Framework is running."
+def main() -> None:
+    app = create_dashboard()
+    app.run(host="0.0.0.0", port=8050, debug=True)
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=True)
+    main()

@@ -1,1 +1,1 @@
-# app/__init__.py
+# app/dashboards/__init__.py
